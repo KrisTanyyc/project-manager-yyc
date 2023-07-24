@@ -56,12 +56,13 @@
                 :href="'/projects'"
                 ><fa icon="fa-solid fa-angle-left" class="mr-2" />Back</a
               >
-              <button
+              <a
                 type="button"
                 class="btn btn-primary mr-2 mb-5 bg-sky-400 text-white font-bold py-2 px-4 rounded"
-              >
+                href="/project/1/snapshot/create"
+                >
                 Snapshot
-              </button>
+              </a>
               <button
                 type="button"
                 class="btn btn-primary mr-2 mb-5 bg-sky-400 text-white font-bold py-2 px-4 rounded"
