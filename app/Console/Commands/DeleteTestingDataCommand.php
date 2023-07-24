@@ -14,7 +14,7 @@ class DeleteTestingDataCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'testingdata:delete';
+    protected $signature = 'TestingData:Delete';
 
     /**
      * The console command description.
@@ -29,9 +29,9 @@ class DeleteTestingDataCommand extends Command
     public function handle()
     {
         //
-        $project_id = Faker::select('project_id')->get();
-
-        $project = Project::whereIn('id', $project_id)->delete();
+        $project_id = Faker::where('model','project')->select('model_id')->get();
+       
+        $project = Project::whereIn('id', $project_id)->forceDelete();
 
         DB::table('fakers')->delete();
 
