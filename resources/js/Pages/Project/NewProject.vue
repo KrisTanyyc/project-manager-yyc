@@ -3,7 +3,7 @@
     <title>{{ project.name }}</title>
   </inertia-head>
   <div class="flex flex-row h-full w-full">
-    <SideMenu pageIndex="1"/>
+    <SideMenu pageIndex="1" />
     <div class="flex flex-col flex-auto bg-white w-4/5 h-screen">
       <NavBar />
       <div class="flex flex-col h-auto w-full bg-white">
@@ -33,11 +33,18 @@
               </button>
               <button
                 type="button"
-                class="border-r-2"
                 :class="getButtonClass(2)"
                 @click="switchToTab(2)"
               >
                 Module
+              </button>
+              <button
+                type="button"
+                class="border-r-2"
+                :class="getButtonClass(3)"
+                @click="switchToTab(3)"
+              >
+                Snapshots
               </button>
             </div>
           </div>
@@ -49,6 +56,12 @@
                 :href="'/projects'"
                 ><fa icon="fa-solid fa-angle-left" class="mr-2" />Back</a
               >
+              <button
+                type="button"
+                class="btn btn-primary mr-2 mb-5 bg-sky-400 text-white font-bold py-2 px-4 rounded"
+              >
+                Snapshot
+              </button>
               <button
                 type="button"
                 class="btn btn-primary mr-2 mb-5 bg-sky-400 text-white font-bold py-2 px-4 rounded"
@@ -73,7 +86,11 @@
                   <tr
                     class="bg-white text-lg font-bold border-b dark:bg-gray-800 dark:border-gray-700"
                   >
-                    <th scope="row" rowspan="2" class="w-4/12 px-6 py-4 border whitespace-normal break-normal">
+                    <th
+                      scope="row"
+                      rowspan="2"
+                      class="w-4/12 px-6 py-4 border whitespace-normal break-normal"
+                    >
                       Module
                     </th>
                     <td class="px-6 py-4 border text-center w-2/12" rowspan="2">
@@ -167,6 +184,17 @@
             </div>
             <ModuleList :smodules="project.modules" :project_id="project.id" />
           </div>
+          <div v-if="tab === 3" class="flex flex-col">
+            <div class="flex justify-end">
+              <a
+                type="button"
+                class="btn btn-primary mt-3 mr-5 bg-sky-400 text-white font-bold py-2 px-4 rounded"
+                :href="'/project/' + project.id + '/module/create'"
+                >Print</a
+              >
+            </div>
+            <SnapshotList />
+          </div>
         </div>
       </div>
     </div>
@@ -179,6 +207,7 @@ import NavBar from "../../NavBar/NavBar.vue";
 import SideMenu from "../../Menu/Side-Menu.vue";
 import StakeholderList from "../Stakeholder/ListStakeholder.vue";
 import ModuleList from "../Module/ListModule.vue";
+import SnapshotList from "../Snapshot/ListSnapshot.vue";
 
 export default defineComponent({
   props: ["project", "smodules", "actions", "authorizations", "stakeholders"],
@@ -187,6 +216,7 @@ export default defineComponent({
     SideMenu,
     StakeholderList,
     ModuleList,
+    SnapshotList,
   },
   data() {
     return {
@@ -233,7 +263,10 @@ export default defineComponent({
         "active:text-white",
         "border-gray-400",
         "border-l-2 border-t-2 border-b-2",
-        { "bg-gray-400 text-white border-l-0 border-r-0": this.tab === tabNumber }
+        {
+          "bg-gray-400 text-white border-l-0 border-r-0":
+            this.tab === tabNumber,
+        },
       ];
     },
     initialized() {
