@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +17,11 @@ class ActionFactory extends Factory
      */
     public function definition(): array
     {
+        $actionArray = ['Browse', 'Read', 'Add', 'Edit', 'Delete'];
+        $action = $actionArray[array_rand($actionArray)];
         return [
-            'name' => $this->faker->word,
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'name' => $action,
+            'created_at' => Carbon::now(),
         ];
     }
 }

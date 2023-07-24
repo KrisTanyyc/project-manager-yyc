@@ -12,7 +12,7 @@ class Stakeholder extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name','project_id','order'];
 
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
     public function project(){
         return $this->belongsTo(Project::class);

@@ -2,12 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Action;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Project;
 use App\Models\Faker;
-use App\Models\Module;
-use App\Models\Stakeholder;
+use Carbon\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
@@ -25,8 +23,8 @@ class ProjectFactory extends Factory
         return [
             //
             'name' => $this->faker->text(20),
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now')
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ];
     }
 
@@ -39,36 +37,36 @@ class ProjectFactory extends Factory
     {
         return $this->afterCreating(function (Project $project) {
             Faker::create([
-                'project_id' => $project->id,
-                'project' => $project->name
+                'model_id' => $project->id,
+                'model' => 'project'
             ]);
-            $moduleData = Module::factory(5)->make();
+            // $moduleData = Module::factory(5)->make();
 
-            $modules = $project->modules()->saveMany($moduleData);
+            // $modules = $project->modules()->saveMany($moduleData);
 
-            foreach ($moduleData as $data) {
-                $data->order = $data->id;
-                $data->save();
-            };
+            // foreach ($moduleData as $data) {
+            //     $data->order = $data->id;
+            //     $data->save();
+            // };
 
-            $stakeholderData = Stakeholder::factory(5)->make();
+            // $stakeholderData = Stakeholder::factory(5)->make();
 
-            $project->stakeholders()->saveMany($stakeholderData);
+            // $project->stakeholders()->saveMany($stakeholderData);
 
-            foreach ($stakeholderData as $data) {
-                $data->order = $data->id;
-                $data->save();
-            };
+            // foreach ($stakeholderData as $data) {
+            //     $data->order = $data->id;
+            //     $data->save();
+            // };
 
-            foreach ($modules as $module) {
-                $actionData = Action::factory(5)->make();
-                $module->actions()->saveMany($actionData);
+            // foreach ($modules as $module) {
+            //     $actionData = Action::factory(5)->make();
+            //     $module->actions()->saveMany($actionData);
 
-                foreach ($actionData as $data) {
-                    $data->order = $data->id;
-                    $data->save();
-                }
-            }
+            //     foreach ($actionData as $data) {
+            //         $data->order = $data->id;
+            //         $data->save();
+            //     }
+            // }
 
         });
     }

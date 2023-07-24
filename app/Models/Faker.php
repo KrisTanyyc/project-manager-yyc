@@ -11,5 +11,5 @@ class Faker extends Model
 
     protected $table = 'fakers';
     protected $primaryKey = 'id';
-    protected $fillable = ['project', 'project_id'];
+    protected $fillable = ['model', 'model_id'];
 }

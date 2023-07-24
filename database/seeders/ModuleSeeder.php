@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Module;
+use App\Models\Project;
 
 class ModuleSeeder extends Seeder
 {
@@ -14,9 +15,16 @@ class ModuleSeeder extends Seeder
     public function run(): void
     {
         //
-        Module::factory()
-            ->count(10)
-            // ->configure() // Set the 'order' column to the ID value
-            ->create();
+
+        $projects = Project::latest()->take(10)->get();
+
+        foreach ($projects as $project) {
+            $j = rand(1, 5);
+            $modules = Module::factory()->count($j)->make();
+            foreach ($modules as $module) {
+                $module->project()->associate($project);
+                $module->save();
+            }
+        }
     }
 }

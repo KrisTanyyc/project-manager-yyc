@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Action extends Model
 {
@@ -12,7 +12,7 @@ class Action extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name','module_id','order'];
 
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
     public function module(){
         return $this->belongsTo(Module::class);

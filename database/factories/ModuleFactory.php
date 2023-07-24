@@ -5,6 +5,8 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Module;
 use App\Models\Project;
+use Carbon\Carbon;
+
 
 
 /**
@@ -22,9 +24,8 @@ class ModuleFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'created_at' => Carbon::now()
         ];
     }
 
-    
-}
+}    

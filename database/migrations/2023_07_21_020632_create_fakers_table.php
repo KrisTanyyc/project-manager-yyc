@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('fakers', function (Blueprint $table) {
             $table->id();
-            $table->string('project')->nullable();
-            $table->unsignedBigInteger('project_id')->nullable();
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->string('model')->nullable();
+            $table->unsignedBigInteger('model_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
