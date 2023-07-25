@@ -72,3 +72,7 @@ Route::post('/project/{project_id}/authorization/update',[App\Http\Controllers\A
 Route::post('/stakeholders/order/update',[App\Http\Controllers\Stakeholder\Updates\UpdateStakeholder::class,'orderUpdate']);
 Route::post('/modules/order/update',[App\Http\Controllers\Module\Updates\UpdateModule::class,'orderUpdate']);
 Route::post('/actions/order/update',[App\Http\Controllers\Action\Updates\UpdateAction::class,'orderUpdate']);
+
+//Snapshot
+Route::post('/project/{project_id}/snapshot/create',[App\Http\Controllers\Snapshot\Creates\CreateSnapshot::class,'create']);
+Route::get('/project/{project_id}/snapshot/create',[App\Http\Controllers\Snapshot\Creates\CreateSnapshot::class,'showabc']);

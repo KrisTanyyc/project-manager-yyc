@@ -59,7 +59,7 @@
               <a
                 type="button"
                 class="btn btn-primary mr-2 mb-5 bg-sky-400 text-white font-bold py-2 px-4 rounded"
-                href="/project/1/snapshot/create"
+                :href='"/project/" + project.id + "/snapshot/create"'
                 >
                 Snapshot
               </a>

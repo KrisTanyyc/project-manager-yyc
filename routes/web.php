@@ -117,7 +117,7 @@ Route::get('/project/{project_id}/stakeholder/{stakeholder_id}/update',[UpdateSt
 Route::get('/project/{project_id}/stakeholder/{stakeholder_id}/delete',[DeleteStakeholder::class,'show'])->name('stakeholder.delete');
 
 //Snapshot
-Route::get('/project/1/snapshot/create',[CreateSnapshot::class,'show'])->name('snapshot.create');
+Route::get('/project/{project_id}/snapshot/create',[CreateSnapshot::class,'show'])->name('snapshot.create');
 Route::get('/project/1/snapshot/1',[ListSnapshot::class,'show'])->name('snapshot.show');
 Route::get('/project/1/snapshot/1/delete',[DeleteSnapshot::class,'show'])->name('snapshot.create');
 
