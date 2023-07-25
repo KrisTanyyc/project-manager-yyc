@@ -194,7 +194,7 @@
                 ><fa icon="fa-solid fa-angle-left" class="mr-2" />Back</a
               >
             </div>
-            <SnapshotList />
+            <SnapshotList :snapshots="snapshots" :project_id="project.id"/>
           </div>
         </div>
       </div>
@@ -211,7 +211,7 @@ import ModuleList from "../Module/ListModule.vue";
 import SnapshotList from "../Snapshot/ListSnapshot.vue";
 
 export default defineComponent({
-  props: ["project", "smodules", "actions", "authorizations", "stakeholders"],
+  props: ["project", "smodules", "actions", "authorizations", "stakeholders","snapshots"],
   components: {
     NavBar,
     SideMenu,
@@ -321,11 +321,5 @@ export default defineComponent({
 });
 </script>
 
-<style>
-@media print {
-  .fa {
-    font-size: 10px;
-  }
-}
-</style>
+
   

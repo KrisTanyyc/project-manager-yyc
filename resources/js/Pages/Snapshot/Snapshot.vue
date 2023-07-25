@@ -12,13 +12,13 @@
           style="border-width: 20px"
         >
           <div class="mt-5 mb-5 ml-5 font-bold text-2xl">
-            <span>Project:ABC Snapshot1 </span>
+            <span>Project:{{ project.name }}/{{ snapshot.name }} </span>
           </div>
           <div class="flex justify-end">
             <a
               type="button"
               class="btn btn-primary mr-2 mb-5 bg-gray-200 text-black py-2 px-4 rounded"
-              href="/projects/31?tab=3"
+              :href="'/projects/' + project.id + '?tab=3'"
               ><fa icon="fa-solid fa-angle-left" class="mr-2" />Back</a
             >
             <button
@@ -48,33 +48,61 @@
                   <td class="px-6 py-4 border text-center w-2/12" rowspan="2">
                     Action
                   </td>
-                  <td class="px-6 py-4 border text-center w-6/12" colspan="1">
+                  <td
+                    class="px-6 py-4 border text-center w-6/12"
+                    :colspan="lengthofStakeholders"
+                  >
                     Stakeholder
                   </td>
                 </tr>
                 <tr
                   class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700"
                 >
-                  <td class="px-3 py-2 border">s</td>
+                  <td
+                    class="px-3 py-2 border"
+                    v-for="(stakeholder, index) in stakeholders"
+                    :key="index"
+                  >
+                    {{ stakeholder.name }}
+                  </td>
                 </tr>
                 <tr
+                  v-for="(smodule, index) in smodules"
+                  :key="index"
                   class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
                   <th
                     scope="row"
                     class="px-6 py-4 text-base border font-medium whitespace-normal text-gray-900 dark:text-white"
                   >
-                    fdsa
+                    {{ smodule }}
                   </th>
                   <td class="px-6 py-4 text-base text-center">
                     <ul>
-                      <li>fdfs</li>
+                      <li
+                        v-for="(action, indexAction) in actions[index]"
+                        :key="indexAction"
+                      >
+                        {{ action }}
+                      </li>
                     </ul>
                   </td>
-                  <td class="px-6 py-4 text-center border">
+                  <td
+                    class="px-6 py-4 text-center border"
+                    v-for="(stakeholder, indexStakeholder) in stakeholders"
+                    :key="indexStakeholder"
+                  >
                     <ul>
-                      <li>
-                        <span class="text-base text-stone-950">✓</span>
+                      <li
+                        v-for="(check, indexCheck) in checkArray[index]"
+                        :key="indexCheck"
+                      >
+                        <span
+                          v-if="check[indexStakeholder]"
+                          class="text-base text-stone-950"
+                          >✓</span
+                        >
+                        <span v-else class="text-base text-gray-200">X</span>
                       </li>
                     </ul>
                   </td>
@@ -94,17 +122,60 @@ import NavBar from "../../NavBar/NavBar.vue";
 import SideMenu from "../../Menu/Side-Menu.vue";
 
 export default defineComponent({
-  props: [],
+  props: ["project", "snapshot"],
   components: {
     NavBar,
     SideMenu,
   },
   data() {
-    return {};
+    return {
+      lengthofStakeholders: 0,
+      lengthofActions: [],
+      checkArray: [],
+      sortModuleArray: [],
+      smodules: this.snapshot["data"]["modules"],
+      actions: this.snapshot["data"]["actions"],
+      authorizations: this.snapshot["data"]["authorizations"],
+      stakeholders: this.snapshot["data"]["stakeholders"],
+    };
   },
   mounted() {},
-  created() {},
-  methods: {},
+  created() {
+    this.initialized();
+    this.checkAuthorized();
+  },
+  methods: {
+    initialized() {
+      this.lengthofStakeholders = this.stakeholders.length;
+    },
+
+    checkAuthorized() {
+      for (let i = 0; i < this.authorizations.length; i++) {
+        this.checkArray[i] = [];
+        this.authorizations[i].forEach((authorization) => {
+          var tempArray = [];
+          this.stakeholders.map((x) => {
+            if (authorization.includes(x.id)) {
+              tempArray.push(true);
+            } else {
+              tempArray.push(false);
+            }
+          });
+          this.checkArray[i].push(tempArray);
+        });
+      }
+    },
+
+    printPage() {
+      var divElements = document.getElementById("printTable");
+      var newWin = window.open("/print");
+      newWin.addEventListener("load", function () {
+        newWin.document.getElementById("printTable").innerHTML =
+          divElements.innerHTML;
+        newWin.print();
+      });
+    },
+  },
 });
 </script>
   
