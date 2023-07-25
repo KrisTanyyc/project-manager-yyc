@@ -27,6 +27,12 @@
           >
           <a
             type="button"
+            class="btn btn-primary mr-2 bg-sky-500 text-white py-2 px-4 rounded border-gray-300"
+            :href='"/project/" + project_id + "/snapshot/" + snapshot.id + "/update"'
+            >Edit</a
+          >
+          <a
+            type="button"
             class="btn btn-primary mr-2 bg-white text-red-500 py-2 px-4 rounded border-2 border-red-500"
             :href='"/project/" + project_id + "/snapshot/" + snapshot.id + "/delete"'
             >Delete</a

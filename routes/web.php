@@ -34,6 +34,7 @@ use App\Http\Controllers\Stakeholder\Deletes\DeleteStakeholder;
 
 use App\Http\Controllers\Snapshot\Creates\CreateSnapshot;
 use App\Http\Controllers\Snapshot\Lists\ListSnapshot;
+use App\Http\Controllers\Snapshot\Updates\UpdateSnapshot;
 use App\Http\Controllers\Snapshot\Deletes\DeleteSnapshot;
 
 use App\Http\Controllers\Auth\AuthController;
@@ -120,7 +121,7 @@ Route::get('/project/{project_id}/stakeholder/{stakeholder_id}/delete',[DeleteSt
 Route::get('/project/{project_id}/snapshot/create',[CreateSnapshot::class,'show'])->name('snapshot.create');
 Route::get('/project/{project_id}/snapshot/{snapshot_id}',[ListSnapshot::class,'show'])->name('snapshot.show');
 Route::get('/project/{project_id}/snapshot/{snapshot_id}/delete',[DeleteSnapshot::class,'show'])->name('snapshot.create');
-
+Route::get('/project/{project_id}/snapshot/{snapshot_id}/update',[UpdateSnapshot::class,'show'])->name('snapshot.update');
 //Print
 Route::get('/print',[ListProject::class,'print']);
 
