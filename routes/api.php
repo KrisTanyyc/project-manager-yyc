@@ -74,5 +74,6 @@ Route::post('/modules/order/update',[App\Http\Controllers\Module\Updates\UpdateM
 Route::post('/actions/order/update',[App\Http\Controllers\Action\Updates\UpdateAction::class,'orderUpdate']);
 
 //Snapshot
-Route::post('/project/{project_id}/snapshot/create',[App\Http\Controllers\Snapshot\Creates\CreateSnapshot::class,'create']);
 Route::get('/project/{project_id}/snapshot/create',[App\Http\Controllers\Snapshot\Creates\CreateSnapshot::class,'showabc']);
+Route::post('/project/{project_id}/snapshot/create',[App\Http\Controllers\Snapshot\Creates\CreateSnapshot::class,'create']);
+Route::delete('/project/{project_id}/snapshot/{snapshot_id}/delete',[App\Http\Controllers\Snapshot\Deletes\DeleteSnapshot::class,'delete']);
