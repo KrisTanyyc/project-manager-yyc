@@ -21,4 +21,8 @@ class Project extends Model
     public function stakeholders(){
         return $this->hasMany(Stakeholder::class);
     }
+
+    public function snapshots(){
+        return $this->hasMany(Snapshot::class);
+    }
 }
