@@ -189,9 +189,9 @@
             <div class="flex justify-end">
               <a
                 type="button"
-                class="btn btn-primary mt-3 mr-5 bg-sky-400 text-white font-bold py-2 px-4 rounded"
-                :href="'/project/' + project.id + '/module/create'"
-                >Print</a
+                class="btn btn-primary mr-5 bg-gray-200 text-black py-2 px-4 rounded"
+                :href="'/projects'"
+                ><fa icon="fa-solid fa-angle-left" class="mr-2" />Back</a
               >
             </div>
             <SnapshotList />
