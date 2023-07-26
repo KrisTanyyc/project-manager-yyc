@@ -67,7 +67,7 @@ class ListProject
             }
         }
 
-        $snapshot = Snapshot::select('id','name')->where('project_id',31)->get();
+        $snapshot = Snapshot::select('id','name')->where('project_id',$project_id)->get();
 
         return inertia('Project/NewProject', [
             'project' => $project,
