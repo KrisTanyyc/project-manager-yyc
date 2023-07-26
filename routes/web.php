@@ -108,8 +108,6 @@ Route::get('/project/{project_id}/module/{module_id}/action/{action_id}/update',
 Route::get('/project/{project_id}/module/{module_id}/action/{action_id}/delete',[DeleteAction::class,'show'])->name('actions.delete');
 
 //Authorization
-Route::get('/project/{project_id}/module/{module_id}/action/{action_id}/authorization',[ListAuthorization::class,'show'])->name('authorization.index');
-Route::get('/project/{project_id}/module/{module_id}/action/{action_id}/authorization/edit',[UpdateAuthorization::class,'show'])->name('authorization.update');
 Route::get('/project/{project_id}/authorizations/edit',[UpdateAuthorization::class,'showEdit'])->name('authorizations.update');
 
 //Stakeholder
@@ -122,6 +120,7 @@ Route::get('/project/{project_id}/snapshot/create',[CreateSnapshot::class,'show'
 Route::get('/project/{project_id}/snapshot/{snapshot_id}',[ListSnapshot::class,'show'])->name('snapshot.show');
 Route::get('/project/{project_id}/snapshot/{snapshot_id}/delete',[DeleteSnapshot::class,'show'])->name('snapshot.create');
 Route::get('/project/{project_id}/snapshot/{snapshot_id}/update',[UpdateSnapshot::class,'show'])->name('snapshot.update');
+
 //Print
 Route::get('/print',[ListProject::class,'print']);
 

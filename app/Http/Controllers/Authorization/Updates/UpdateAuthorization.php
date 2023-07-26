@@ -11,26 +11,6 @@ use Illuminate\Http\Request;
 class UpdateAuthorization
 {
     //
-    public function show($project_id, $module_id, $action_id)
-    {
-        $project = Project::findorFail($project_id);
-        $module = Module::findorFail($module_id);
-        $action = Action::findorFail($action_id);
-        $stakeholder = Stakeholder::where('project_id', $project_id)->get();
-
-
-
-        return inertia(
-            'Authorization/UpdateAuthorization',
-            [
-                'project' => $project,
-                'smodule' => $module,
-                'action' => $action,
-                'stakeholders' => $stakeholder
-            ]
-        );
-    }
-
     public function showEdit($project_id)
     {
         $project = Project::findorFail($project_id);
@@ -62,30 +42,6 @@ class UpdateAuthorization
             'stakeholders' => $stakeholders,
             'authorizations' => $authorizations
         ]);
-    }
-
-    public function update($action_id, Request $request)
-    {
-        $addIds = $request->input('addIds');
-        $deleteIds = $request->input('deleteIds');
-
-
-        $action = Action::findorFail($action_id);
-
-        if (count($addIds) !== 0) {
-            $action->stakeholders()->syncWithoutDetaching($addIds);
-        }
-
-        if (count($deleteIds) !== 0) {
-            $action->stakeholders()->detach($deleteIds);
-        }
-
-        return response()->json(
-            [
-                'success' => 'successfully updated!',
-                'data' => $action
-            ]
-        );
     }
 
     public function updateAll(Request $request)

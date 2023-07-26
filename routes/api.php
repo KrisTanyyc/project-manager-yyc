@@ -64,8 +64,7 @@ Route::get('/displayAssignRole/{user_id}',[\App\Http\Controllers\RoleToUser\Role
 Route::post('/removeUserRole',[App\Http\Controllers\RoleToUser\RoleToUserController::class,'removeUserRole']);
 Route::post('/assignUserRole',[App\Http\Controllers\RoleToUser\RoleToUserController::class,'assignUserRole']);
 
-Route::get('/action/{action_id}/authorization',[App\Http\Controllers\Authorization\Lists\ListAuthorization::class,'list']);
-Route::post('/action/{action_id}/authorization',[App\Http\Controllers\Authorization\Updates\UpdateAuthorization::class,'update']);
+//Authorization
 Route::post('/project/{project_id}/authorization/update',[App\Http\Controllers\Authorization\Updates\UpdateAuthorization::class,'updateAll']);
 
 //Change the order of table
