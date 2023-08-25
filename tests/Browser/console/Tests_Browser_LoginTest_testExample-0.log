@@ -1,0 +1,20 @@
+[
+    {
+        "level": "WARNING",
+        "message": "http:\/\/[::1]:5173\/node_modules\/.vite\/deps\/chunk-G4DFXOZZ.js?v=53b83b81 1448:12 \"[Vue warn]: Failed to resolve component: inertia-head\\nIf this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.\" \"\\n\" \" at \\u003CListRole\" \"errors=\" Object \"csrf_token=\\\"s09bSDtvBOd9otad2EKKXDNuv3SFg2RLuKGaaXu9\\\"\" \"user=\" Object \" ...\" \">\" \"\\n\" \" at \\u003CInertia\" \"initialPage=\" Object \"initialComponent=\" Object \"resolveComponent=fn\\u003Cr>\" \" ...\" \">\" \"\\n\" \" at \\u003CApp>\"",
+        "source": "console-api",
+        "timestamp": 1690427376699
+    },
+    {
+        "level": "WARNING",
+        "message": "http:\/\/[::1]:5173\/node_modules\/.vite\/deps\/chunk-G4DFXOZZ.js?v=53b83b81 1448:12 \"[Vue warn]: Data property \\\"user\\\" is already defined in Props.\" \"\\n\" \" at \\u003CSideMenu\" \"pageIndex=\\\"3\\\"\" \">\" \"\\n\" \" at \\u003CListRole\" \"errors=\" Object \"csrf_token=\\\"s09bSDtvBOd9otad2EKKXDNuv3SFg2RLuKGaaXu9\\\"\" \"user=\" Object \" ...\" \">\" \"\\n\" \" at \\u003CInertia\" \"initialPage=\" Object \"initialComponent=\" Object \"resolveComponent=fn\\u003Cr>\" \" ...\" \">\" \"\\n\" \" at \\u003CApp>\"",
+        "source": "console-api",
+        "timestamp": 1690427376703
+    },
+    {
+        "level": "WARNING",
+        "message": "http:\/\/[::1]:5173\/node_modules\/.vite\/deps\/chunk-G4DFXOZZ.js?v=53b83b81 1448:12 \"[Vue warn]: Data property \\\"user\\\" is already defined in Props.\" \"\\n\" \" at \\u003CNavBar>\" \"\\n\" \" at \\u003CListRole\" \"errors=\" Object \"csrf_token=\\\"s09bSDtvBOd9otad2EKKXDNuv3SFg2RLuKGaaXu9\\\"\" \"user=\" Object \" ...\" \">\" \"\\n\" \" at \\u003CInertia\" \"initialPage=\" Object \"initialComponent=\" Object \"resolveComponent=fn\\u003Cr>\" \" ...\" \">\" \"\\n\" \" at \\u003CApp>\"",
+        "source": "console-api",
+        "timestamp": 1690427376724
+    }
+]
