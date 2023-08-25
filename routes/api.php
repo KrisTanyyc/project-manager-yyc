@@ -64,11 +64,16 @@ Route::get('/displayAssignRole/{user_id}',[\App\Http\Controllers\RoleToUser\Role
 Route::post('/removeUserRole',[App\Http\Controllers\RoleToUser\RoleToUserController::class,'removeUserRole']);
 Route::post('/assignUserRole',[App\Http\Controllers\RoleToUser\RoleToUserController::class,'assignUserRole']);
 
-Route::get('/action/{action_id}/authorization',[App\Http\Controllers\Authorization\Lists\ListAuthorization::class,'list']);
-Route::post('/action/{action_id}/authorization',[App\Http\Controllers\Authorization\Updates\UpdateAuthorization::class,'update']);
+//Authorization
 Route::post('/project/{project_id}/authorization/update',[App\Http\Controllers\Authorization\Updates\UpdateAuthorization::class,'updateAll']);
 
 //Change the order of table
 Route::post('/stakeholders/order/update',[App\Http\Controllers\Stakeholder\Updates\UpdateStakeholder::class,'orderUpdate']);
 Route::post('/modules/order/update',[App\Http\Controllers\Module\Updates\UpdateModule::class,'orderUpdate']);
 Route::post('/actions/order/update',[App\Http\Controllers\Action\Updates\UpdateAction::class,'orderUpdate']);
+
+//Snapshot
+Route::get('/project/{project_id}/snapshot/create',[App\Http\Controllers\Snapshot\Creates\CreateSnapshot::class,'showabc']);
+Route::post('/project/{project_id}/snapshot/create',[App\Http\Controllers\Snapshot\Creates\CreateSnapshot::class,'create']);
+Route::put('/project/{project_id}/snapshot/{snapshot_id}/update',[App\Http\Controllers\Snapshot\Updates\UpdateSnapshot::class,'update']);
+Route::delete('/project/{project_id}/snapshot/{snapshot_id}/delete',[App\Http\Controllers\Snapshot\Deletes\DeleteSnapshot::class,'delete']);

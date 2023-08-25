@@ -7,8 +7,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Resources\ModuleResource;
 use App\Models\Module;
-
-
+use App\Models\Snapshot;
 
 class ListProject
 {
@@ -67,14 +66,16 @@ class ListProject
                 array_push($authorizations[$i], $tempArray);
             }
         }
-       
+
+        $snapshot = Snapshot::select('id','name')->where('project_id',$project_id)->get();
 
         return inertia('Project/NewProject', [
             'project' => $project,
             'smodules' => $modules,
             'actions' => $actions,
             'stakeholders' => $stakeholders,
-            'authorizations' => $authorizations
+            'authorizations' => $authorizations,
+            'snapshots' => $snapshot
         ]);
     }
 
